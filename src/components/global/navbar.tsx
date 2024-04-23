@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CiMenuBurger } from "react-icons/ci";
+import { UserButton } from "@clerk/nextjs";
 
 type Props = {};
 
@@ -54,9 +55,6 @@ const Navbar = async (props: Props) => {
             }
           </span>
         </Link>
-        {
-          //WIP: wire up user
-        }
         <CiMenuBurger size={20} />
       </aside>
     </header>
