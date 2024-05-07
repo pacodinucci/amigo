@@ -1,13 +1,12 @@
 import React from "react";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
@@ -20,7 +19,7 @@ type Props = {
   publish: boolean | null;
 };
 
-const Workflow = ({ name, description, id, publish }: Props) => {
+const Workflow = ({ description, id, name, publish }: Props) => {
   const onPublishFlow = async (event: any) => {
     const response = await onFlowPublish(
       id,
@@ -30,7 +29,7 @@ const Workflow = ({ name, description, id, publish }: Props) => {
   };
 
   return (
-    <Card className="flex w-full items-center justify-between">
+    <Card className="flex w-full items-center justify-between mb-2">
       <CardHeader className="flex flex-col gap-4">
         <Link href={`/workflows/editor/${id}`}>
           <div className="flex flex-row gap-2">
@@ -68,9 +67,8 @@ const Workflow = ({ name, description, id, publish }: Props) => {
         </Label>
         <Switch
           id="airplane-mode"
-          onClick={onPublishFlow}
-          //@ts-ignore
-          defaultChecked={publish}
+          // onClick={onPublishFlow}
+          defaultChecked={publish!}
         />
       </div>
     </Card>

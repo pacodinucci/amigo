@@ -136,15 +136,19 @@ export const onCreateNodeTemplate = async (
 };
 
 export const onGetWorkflows = async () => {
-  const user = await currentUser();
-  if (user) {
-    const workflow = await db.workflows.findMany({
-      where: {
-        userId: user.id,
-      },
-    });
+  try {
+    const user = await currentUser();
+    if (user) {
+      const workflow = await db.workflows.findMany({
+        where: {
+          userId: user.id,
+        },
+      });
 
-    if (workflow) return workflow;
+      if (workflow) return workflow;
+    }
+  } catch (error) {
+    console.error("Error en onGetWorkflows:", error);
   }
 };
 
